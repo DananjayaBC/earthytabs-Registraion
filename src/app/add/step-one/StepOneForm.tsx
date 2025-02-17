@@ -1,9 +1,9 @@
-'use client';
-import Input from '@/components/Input';
-import { useFormState } from 'react-dom';
-import { stepOneFormAction } from './actions';
-import { FormErrors } from '@/types';
-import SubmitButton from '@/components/SubmitButton';
+"use client";
+import Input from "@/components/Input";
+import { useFormState } from "react-dom";
+import { stepOneFormAction } from "./actions";
+import { FormErrors } from "@/types";
+import SubmitButton from "@/components/SubmitButton";
 
 const initialState: FormErrors = {};
 
@@ -17,7 +17,7 @@ export default function StepOneForm() {
     <form action={formAction} className="flex flex-1 flex-col items-center">
       <div className="flex w-full flex-col gap-8 lg:max-w-[700px] ">
         <Input
-          label="Name"
+          label="Full Name"
           id="name"
           type="text"
           required
