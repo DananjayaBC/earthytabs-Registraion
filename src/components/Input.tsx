@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useAddDealContext } from '@/contexts/addDealContext';
+import { useAddDealContext } from "@/contexts/addDealContext";
 
 interface InputProps {
   label: string;
@@ -43,7 +43,7 @@ export default function Input({
       </label>
       <input
         className={`w-full rounded-md py-4 px-2 text-slate-900 ${
-          errorMsg ? 'border-red-500' : 'border-slate-300'
+          errorMsg ? "border-red-500" : "border-slate-300"
         } border-2`}
         type={type}
         name={id}
@@ -54,7 +54,6 @@ export default function Input({
         min={min}
         max={max}
         onChange={handleInputChange}
-        defaultValue={newDealData[id]}
       />
       <div className="min-h-8 mt-1">
         {errorMsg && (
@@ -65,5 +64,5 @@ export default function Input({
   );
 }
 function setUpdatedDeal(arg0: (prev: any) => any) {
-  throw new Error('Function not implemented.');
+  throw new Error("Function not implemented.");
 }
