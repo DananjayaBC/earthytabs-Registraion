@@ -25,7 +25,7 @@ export default function PageHeader({
         />
       </svg>
       {/* Title */}
-      <h1 className="mb-4 text-3xl font-semibold text-slate-300 md:text-5xl">
+      <h1 className="mb-4 text-2xl font-semibold text-slate-300 md:text-5xl">
         {title}
       </h1>
       {/* Subtitle */}
