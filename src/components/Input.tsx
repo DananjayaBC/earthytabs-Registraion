@@ -42,9 +42,11 @@ export default function Input({
         )}
       </label>
       <input
-        className={`w-full rounded-md py-4 px-2 text-slate-900 ${
-          errorMsg ? "border-red-500" : "border-slate-300"
-        } border-2`}
+        className={`w-full rounded-lg py-3 px-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 border-2 ${
+          errorMsg
+            ? "border-red-500 shadow-red-100 hover:border-red-600"
+            : "border-slate-200 hover:border-slate-300"
+        } shadow-sm hover:shadow-md`}
         type={type}
         name={id}
         id={id}
@@ -54,6 +56,7 @@ export default function Input({
         min={min}
         max={max}
         onChange={handleInputChange}
+        placeholder={errorMsg} // Add a placeholder prop for better UX
       />
       <div className="min-h-8 mt-1">
         {errorMsg && (

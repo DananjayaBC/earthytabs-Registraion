@@ -1,7 +1,7 @@
-import React from 'react';
-import PageHeader from '@/components/PageHeader';
-import StepNavigation from '@/components/StepNavigation';
-import { AddDealContextProvider } from '@/contexts/addDealContext';
+import React from "react";
+import PageHeader from "@/components/PageHeader";
+import StepNavigation from "@/components/StepNavigation";
+import { AddDealContextProvider } from "@/contexts/addDealContext";
 
 export default function DealsLayout({
   children,
@@ -11,7 +11,7 @@ export default function DealsLayout({
   return (
     <div className="w-full px-2 lg:px-0">
       <PageHeader
-        title="Share a Deal"
+        title="One Tab.Big Impact."
         subtitle="Have an amazing deal or discount tailored for developers? Let us know!"
       />
 

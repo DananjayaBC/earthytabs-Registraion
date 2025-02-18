@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Sora } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
-const inter = Inter({ subsets: ["latin"] });
+const sora = Sora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-slate-900">
-      <body className={inter.className}>
+      <body className={sora.className}>
         <main className="min-h-screen px-8 max-w-7xl mx-auto py-20">
           {children}
           <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
