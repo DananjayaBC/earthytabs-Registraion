@@ -25,12 +25,12 @@ export default function PageHeader({
         />
       </svg>
       {/* Title */}
-      <h1 className="mb-4 text-4xl font-semibold text-slate-300 md:text-5xl">
+      <h1 className="mb-4 text-3xl font-semibold text-slate-300 md:text-5xl">
         {title}
       </h1>
       {/* Subtitle */}
       {subtitle && (
-        <span className="text-sm font-light text-slate-400 md:text-xl">
+        <span className="text-sm text-center font-light text-slate-400 md:text-xl">
           {subtitle}
         </span>
       )}
