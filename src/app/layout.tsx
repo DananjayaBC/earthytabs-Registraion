@@ -21,7 +21,7 @@ export default function RootLayout({
         <main className="min-h-screen px-8 max-w-7xl mx-auto py-20">
           {children}
           <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
-          <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
+          <div className="pointer-events-none fixed inset-0 -z-40 h-screen w-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
           <Toaster />
         </main>
       </body>
