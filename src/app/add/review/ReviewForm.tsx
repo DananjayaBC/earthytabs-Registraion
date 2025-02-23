@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useAddDealContext } from "@/contexts/addDealContext";
 import { NewDealType } from "@/schemas";
+import emailjs from "@emailjs/browser";
 
 export default function ReviewForm() {
   const router = useRouter();
@@ -18,15 +19,39 @@ export default function ReviewForm() {
     const res = await submitDealAction(newDealData as NewDealType);
     const { redirect, errorMsg, success } = res;
 
-    if (success) {
-      toast.success("Deal submitted successfully");
-      resetLocalStorage();
-    } else if (errorMsg) {
-      toast.error(errorMsg);
+    try {
+      await emailjs.send(
+        "service_z1oxwyk",
+        "template_rgiz457",
+        {
+          from_name: name,
+          to_name: "Dananjaya",
+          contactEmail: contactEmail,
+          to_email: "dananjaya.chanuka@gmail.com",
+          link: link,
+          coupon: coupon,
+          discount: discount,
+          contactName: contactName,
+        },
+        "rue3kZK0havg7vtxY"
+      );
+      toast.success("Registraion successfully");
+      return router.push("https://earthytabs-landing.vercel.app/");
+    } catch (error) {
+      console.log(error);
+
+      toast.error("Something went wrong, Please try again later");
     }
-    if (redirect) {
-      return router.push(redirect);
-    }
+
+    // if (success) {
+    //   toast.success("Deal submitted successfully");
+    //   resetLocalStorage();
+    // } else if (errorMsg) {
+    //   toast.error(errorMsg);
+    // }
+    // if (redirect) {
+    //   return router.push(redirect);
+    // }
   };
 
   return (
