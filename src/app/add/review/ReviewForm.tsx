@@ -36,7 +36,9 @@ export default function ReviewForm() {
         "rue3kZK0havg7vtxY"
       );
       toast.success("Registraion successfully");
-      return router.push("https://earthytabs-landing.vercel.app/");
+      setTimeout(() => {
+        router.push("https://earthytabs-landing.vercel.app/");
+      }, 3000);
     } catch (error) {
       console.log(error);
 
