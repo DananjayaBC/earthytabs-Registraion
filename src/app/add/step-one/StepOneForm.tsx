@@ -17,20 +17,18 @@ export default function StepOneForm() {
     <form action={formAction} className="flex flex-1 flex-col items-center">
       <div className="flex w-full flex-col gap-8 lg:max-w-[700px] ">
         <Input
-          label="Full Name"
-          id="name"
+          label="First Name"
+          id="fName"
           type="text"
           required
-          errorMsg={serverErrors?.name}
+          errorMsg={serverErrors?.fName}
         />
         <Input
-          label="Link"
-          id="link"
-          required
+          label="Last Name"
+          id="lName"
           type="text"
-          description='Must start with "http://" or "https://"'
-          pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
-          errorMsg={serverErrors?.link}
+          required
+          errorMsg={serverErrors?.lName}
         />
         <SubmitButton text="Continue" />
       </div>

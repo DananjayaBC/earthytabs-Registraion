@@ -1,9 +1,9 @@
-'use client';
-import Input from '@/components/Input';
-import SubmitButton from '../../../components/SubmitButton';
-import { stepTwoFormAction } from './actions';
-import { useFormState } from 'react-dom';
-import { FormErrors } from '@/types';
+"use client";
+import Input from "@/components/Input";
+import SubmitButton from "../../../components/SubmitButton";
+import { stepTwoFormAction } from "./actions";
+import { useFormState } from "react-dom";
+import { FormErrors } from "@/types";
 
 const initialState: FormErrors = {};
 
@@ -16,25 +16,26 @@ export default function StepTwoForm() {
     <form action={formAction} className="flex flex-1 flex-col items-center">
       <div className="flex w-full flex-col gap-8 lg:max-w-[700px]">
         <Input
-          label="Coupon Code"
-          id="coupon"
+          label="Company Name"
+          id="companyName"
           required
           type="text"
-          description="Must be at least 5 characters long"
-          minLength={5}
-          errorMsg={serverErrors?.coupon}
+          errorMsg={serverErrors?.companyName}
         />
         <Input
-          label="Discount (%)"
-          id="discount"
-          min={1}
-          max={100}
+          label="Contact Number"
+          id="contactNumber"
           required
-          description="Must be between 1 and 100"
           type="number"
-          errorMsg={serverErrors?.discount}
+          errorMsg={serverErrors?.contactNumber}
         />
-
+        <Input
+          label="Company Email"
+          id="companyEmail"
+          required
+          type="email"
+          errorMsg={serverErrors?.email}
+        />
         <SubmitButton text="Continue" />
       </div>
     </form>

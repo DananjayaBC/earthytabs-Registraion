@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import {
   createContext,
   useCallback,
@@ -6,23 +6,25 @@ import {
   useEffect,
   useMemo,
   useState,
-} from 'react';
+} from "react";
 import {
   NewDealInitialValuesType,
   NewDealType,
   newDealInitialValuesSchema,
-} from '@/schemas';
+} from "@/schemas";
 
 const defaultDeal: NewDealInitialValuesType = {
-  name: '',
-  link: '',
-  coupon: '',
-  discount: undefined,
-  contactName: '',
-  contactEmail: '',
+  fName: "",
+  lName: "",
+  companyName: "",
+  contactNumber: undefined,
+  companyEmail: "",
+  whatType: "",
+  whatKind: "",
+  chemicalList: "",
 };
 
-const LOCAL_STORAGE_KEY = 'multi-page-form-demo-newDealData';
+const LOCAL_STORAGE_KEY = "multi-page-form-demo-newDealData";
 
 type AddDealContextType = {
   newDealData: NewDealInitialValuesType;
@@ -106,7 +108,7 @@ export function useAddDealContext() {
   const context = useContext(AddDealContext);
   if (context === null) {
     throw new Error(
-      'useAddDealContext must be used within a AddDealContextProvider'
+      "useAddDealContext must be used within a AddDealContextProvider"
     );
   }
   return context;
