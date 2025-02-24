@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from "react";
+"use client";
+
+import { createContext, useContext, ReactNode, useState } from "react";
 
 type NewDealData = {
   fName?: string;
@@ -8,7 +10,7 @@ type NewDealData = {
   companyEmail?: string;
   whatType?: string;
   whatKind?: string;
-  chemicalList?: string[]; // Updated to an array of strings
+  chemicalList?: string[];
   [key: string]: any; // Allow string indexing
 };
 
@@ -27,11 +29,7 @@ export const useAddDealContext = () => {
   return context;
 };
 
-export const AddDealProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const AddDealProvider = ({ children }: { children: ReactNode }) => {
   const [newDealData, setNewDealData] = useState<NewDealData>({});
 
   const updateNewDealDetails = (data: Partial<NewDealData>) => {
