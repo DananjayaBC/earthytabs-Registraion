@@ -1,115 +1,46 @@
-"use client";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import {
-  NewDealInitialValuesType,
-  NewDealType,
-  newDealInitialValuesSchema,
-} from "@/schemas";
+import { createContext, useContext, useState } from "react";
 
-const defaultDeal: NewDealInitialValuesType = {
-  fName: "",
-  lName: "",
-  companyName: "",
-  contactNumber: undefined,
-  companyEmail: "",
-  whatType: "",
-  whatKind: "",
-  chemicalList: [],
+type NewDealData = {
+  fName?: string;
+  lName?: string;
+  companyName?: string;
+  contactNumber?: number;
+  companyEmail?: string;
+  whatType?: string;
+  whatKind?: string;
+  chemicalList?: string[]; // Updated to an array of strings
+  [key: string]: any; // Allow string indexing
 };
-
-const LOCAL_STORAGE_KEY = "multi-page-form-demo-newDealData";
 
 type AddDealContextType = {
-  newDealData: NewDealInitialValuesType;
-  updateNewDealDetails: (dealDetails: Partial<NewDealType>) => void;
-  dataLoaded: boolean;
-  resetLocalStorage: () => void;
+  newDealData: NewDealData;
+  updateNewDealDetails: (data: Partial<NewDealData>) => void;
 };
 
-export const AddDealContext = createContext<AddDealContextType | null>(null);
+const AddDealContext = createContext<AddDealContextType | undefined>(undefined);
 
-export const AddDealContextProvider = ({
+export const useAddDealContext = () => {
+  const context = useContext(AddDealContext);
+  if (!context) {
+    throw new Error("useAddDealContext must be used within an AddDealProvider");
+  }
+  return context;
+};
+
+export const AddDealProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [newDealData, setNewDealData] =
-    useState<NewDealInitialValuesType>(defaultDeal);
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const [newDealData, setNewDealData] = useState<NewDealData>({});
 
-  useEffect(() => {
-    readFromLocalStorage();
-    setDataLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (dataLoaded) {
-      saveDataToLocalStorage(newDealData);
-    }
-  }, [newDealData, dataLoaded]);
-
-  const updateNewDealDetails = useCallback(
-    (dealDetails: Partial<NewDealType>) => {
-      setNewDealData({ ...newDealData, ...dealDetails });
-    },
-    [newDealData]
-  );
-
-  const saveDataToLocalStorage = (
-    currentDealData: NewDealInitialValuesType
-  ) => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(currentDealData));
+  const updateNewDealDetails = (data: Partial<NewDealData>) => {
+    setNewDealData((prev) => ({ ...prev, ...data }));
   };
-
-  const readFromLocalStorage = () => {
-    const loadedDataString = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (!loadedDataString) return setNewDealData(defaultDeal);
-    const validated = newDealInitialValuesSchema.safeParse(
-      JSON.parse(loadedDataString)
-    );
-
-    if (validated.success) {
-      setNewDealData(validated.data);
-    } else {
-      setNewDealData(defaultDeal);
-    }
-  };
-
-  const resetLocalStorage = () => {
-    localStorage.removeItem(LOCAL_STORAGE_KEY);
-    setNewDealData(defaultDeal);
-  };
-
-  const contextValue = useMemo(
-    () => ({
-      newDealData,
-      dataLoaded,
-      updateNewDealDetails,
-      resetLocalStorage,
-    }),
-    [newDealData, dataLoaded, updateNewDealDetails]
-  );
 
   return (
-    <AddDealContext.Provider value={contextValue}>
+    <AddDealContext.Provider value={{ newDealData, updateNewDealDetails }}>
       {children}
     </AddDealContext.Provider>
   );
 };
-
-export function useAddDealContext() {
-  const context = useContext(AddDealContext);
-  if (context === null) {
-    throw new Error(
-      "useAddDealContext must be used within a AddDealContextProvider"
-    );
-  }
-  return context;
-}

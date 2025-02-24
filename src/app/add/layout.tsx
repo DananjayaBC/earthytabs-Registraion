@@ -1,7 +1,7 @@
 import React from "react";
 import PageHeader from "@/components/PageHeader";
 import StepNavigation from "@/components/StepNavigation";
-import { AddDealContextProvider } from "@/contexts/addDealContext";
+import { AddDealProvider } from "@/contexts/addDealContext";
 
 export default function DealsLayout({
   children,
@@ -17,9 +17,9 @@ export default function DealsLayout({
 
       <div className="mt-20 mb-28 flex flex-col gap-x-16 text-white lg:flex-row">
         <StepNavigation />
-        <AddDealContextProvider>
+        <AddDealProvider>
           <div className="w-full">{children}</div>
-        </AddDealContextProvider>
+        </AddDealProvider>
       </div>
     </div>
   );

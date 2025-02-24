@@ -10,7 +10,7 @@ import emailjs from "@emailjs/browser";
 
 export default function ReviewForm() {
   const router = useRouter();
-  const { newDealData, resetLocalStorage } = useAddDealContext();
+  const { newDealData } = useAddDealContext();
 
   const {
     fName,
@@ -27,7 +27,7 @@ export default function ReviewForm() {
     const res = await submitDealAction(newDealData as NewDealType);
     const { redirect, errorMsg, success } = res;
 
-    try {
+    if (success) {
       await emailjs.send(
         "service_z1oxwyk",
         "template_rgiz457",
@@ -45,26 +45,17 @@ export default function ReviewForm() {
         },
         "rue3kZK0havg7vtxY"
       );
-      resetLocalStorage();
+
       toast.success("Registraion successfully...redirect to home page");
       setTimeout(() => {
         router.push("https://earthytabs-landing.vercel.app/");
       }, 3000);
-    } catch (error) {
-      console.log(error);
-
-      toast.error("Something went wrong, Please try again later");
+    } else if (errorMsg) {
+      toast.error(errorMsg);
     }
-
-    // if (success) {
-    //   toast.success("Deal submitted successfully");
-    //   resetLocalStorage();
-    // } else if (errorMsg) {
-    //   toast.error(errorMsg);
-    // }
-    // if (redirect) {
-    //   return router.push(redirect);
-    // }
+    if (redirect) {
+      return router.push(redirect);
+    }
   };
 
   return (
@@ -75,7 +66,7 @@ export default function ReviewForm() {
       <p className="text-xl md:text-3xl">First Name: {fName}</p>
       <p className="text-xl md:text-3xl">Last Name: {lName}</p>
       <p className="text-white/90">Company Name: {companyName}</p>
-      <p className="text-white/90">Contact Number: {contactNumber}%</p>
+      <p className="text-white/90">Contact Number: {contactNumber}</p>
       <p className="text-white/90">Company Email: {companyEmail}</p>
       <p className="text-white/90">
         What type of cleaning company are you: {whatType}
