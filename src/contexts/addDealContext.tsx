@@ -21,7 +21,7 @@ const defaultDeal: NewDealInitialValuesType = {
   companyEmail: "",
   whatType: "",
   whatKind: "",
-  chemicalList: "",
+  chemicalList: [],
 };
 
 const LOCAL_STORAGE_KEY = "multi-page-form-demo-newDealData";

@@ -29,7 +29,7 @@ export const newDealInitialValuesSchema = z.object({
   companyEmail: z.string().optional(),
   whatType: z.string().optional(),
   whatKind: z.string().optional(),
-  chemicalList: z.string().optional(),
+  chemicalList: z.array(z.string()).optional(),
 });
 // export const newDealInitialValuesSchema = z.object({
 //   name: z.string().optional(),
