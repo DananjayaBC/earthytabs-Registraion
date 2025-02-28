@@ -10,10 +10,7 @@ export default function DealsLayout({
 }) {
   return (
     <div className="w-full px-2 lg:px-0">
-      <PageHeader
-        title="One Tab.Big Impact."
-        subtitle="Have an amazing deal or discount tailored for developers? Let us know!"
-      />
+      <PageHeader title="One Tab.Big Impact." />
 
       <div className="mt-20 mb-28 flex flex-col gap-x-16 text-white lg:flex-row">
         <StepNavigation />
