@@ -63,20 +63,68 @@ export default function ReviewForm() {
       action={handleFormSubmit}
       className="flex flex-1 flex-col gap-2 items-stretch lg:max-w-[700px]"
     >
-      <p className="text-xl md:text-3xl">First Name: {fName}</p>
-      <p className="text-xl md:text-3xl">Last Name: {lName}</p>
-      <p className="text-white/90">Company Name: {companyName}</p>
-      <p className="text-white/90">Contact Number: {contactNumber}</p>
-      <p className="text-white/90">Company Email: {companyEmail}</p>
-      <p className="text-white/90">
-        What type of cleaning company are you: {whatType}
-      </p>
-      <p className="text-white/90">
-        What kind of cleaning types you offer: {whatKind}
-      </p>
-      <p className="text-white/90">
-        Which Chemical Ranges you using at the moment: {chemicalList}
-      </p>
+      <table className="w-full border border-white text-white text-left text-sm md:text-base">
+        <tbody>
+          <tr className="border-b border-white">
+            <td className="p-2 font-semibold border-r border-white">
+              First Name:
+            </td>
+            <td className="p-2">{fName}</td>
+          </tr>
+          <tr className="border-b border-white">
+            <td className="p-2 font-semibold border-r border-white">
+              Last Name:
+            </td>
+            <td className="p-2">{lName}</td>
+          </tr>
+          <tr className="border-b border-white">
+            <td className="p-2 font-semibold border-r border-white">
+              Company Name:
+            </td>
+            <td className="p-2">{companyName}</td>
+          </tr>
+          <tr className="border-b border-white">
+            <td className="p-2 font-semibold border-r border-white">
+              Contact Number:
+            </td>
+            <td className="p-2">{contactNumber}</td>
+          </tr>
+          <tr className="border-b border-white">
+            <td className="p-2 font-semibold border-r border-white">
+              Company Email:
+            </td>
+            <td className="p-2">{companyEmail}</td>
+          </tr>
+          <tr className="border-b border-white">
+            <td className="p-2 font-semibold border-r border-white">
+              What type of cleaning company are you:
+            </td>
+            <td className="p-2">{whatType}</td>
+          </tr>
+          <tr className="border-b border-white">
+            <td className="p-2 font-semibold border-r border-white">
+              What kind of cleaning types you offer:
+            </td>
+            <td className="p-2">{whatKind}</td>
+          </tr>
+          <tr>
+            <td className="p-2 font-semibold border-r border-white">
+              Which Chemical Ranges you are using at the moment:
+            </td>
+            <td className="p-2">
+              {Array.isArray(chemicalList) ? (
+                <ul className="list-disc list-inside">
+                  {chemicalList.map((chemical, index) => (
+                    <li key={index}>{chemical}</li>
+                  ))}
+                </ul>
+              ) : (
+                chemicalList
+              )}
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <SubmitButton text="Submit" />
     </form>

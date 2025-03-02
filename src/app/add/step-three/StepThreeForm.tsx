@@ -41,12 +41,47 @@ export default function StepThreeForm() {
     { value: "other", label: "Other (Specify)" },
   ];
   const chemicalOptions = [
-    { value: "bleach,", label: "Bleach" },
-    { value: "ammonia,", label: "Ammonia" },
-    { value: "hydrogen_peroxide,", label: "Hydrogen Peroxide" },
-    { value: "vinegar,", label: "Vinegar" },
-    { value: "other,", label: "Other (Specify)" },
+    {
+      value: "Air Fresheners Deodorisers,",
+      label: "Air Fresheners & Deodorisers",
+    },
+    {
+      value: "All Purpose Floor Cleaning,",
+      label: "All Purpose & Floor Cleaning",
+    },
+    { value: "Carpet Care,", label: "Carpet Care" },
+    {
+      value: "Chlorinated Cleaners Sanitisers",
+      label: "Chlorinated Cleaners & Sanitisers",
+    },
+    { value: "CleanSave Range,", label: "CleanSave Range" },
+    {
+      value: "Disinfectant Antibacterial Detergents,",
+      label: "Disinfectant & Antibacterial Detergents",
+    },
+    { value: "Floor Care,", label: "Floor Care" },
+    { value: "Furniture Polish,", label: "Furniture Polish" },
+    { value: "Glass Cleaning,", label: "Glass Cleaning" },
+    { value: "Green Cleaning,", label: "Green Cleaning" },
+    { value: "Heavy Duty Detergents,", label: "Heavy Duty Detergents" },
+    { value: "Kitchen Cleaning,", label: "Kitchen Cleaning" },
+    { value: "Laundry Products,", label: "Laundry Products" },
+    {
+      value: "Personal Care,",
+      label: "Personal Care (Hand Soaps, Sanitizers)",
+    },
+    {
+      value: "Specialty Cleaning Products,",
+      label: "Specialty Cleaning Products",
+    },
+    { value: "Spray Wipe Cleaners,", label: "Spray & Wipe Cleaners" },
+    { value: "Stainless Steel Care,", label: "Stainless Steel Care" },
+    {
+      value: "Toilet Bathroom Cleaning Products,",
+      label: "Toilet & Bathroom Cleaning Products",
+    },
   ];
+
   const [serverErrors, formAction] = useFormState(
     stepThreeFormAction,
     initialState
